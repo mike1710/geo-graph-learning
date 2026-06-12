@@ -42,6 +42,48 @@ def _pip_install(*args: str) -> None:
     subprocess.run(cmd, check=True)
 
 
+# Core scientific packages Colab ships preloaded. If a slim install bumps one of
+# these transitively, the in-memory copy goes ABI-inconsistent and the runtime
+# must be restarted before the smoke test will pass (numpy '_center' break).
+_CORE_PKGS = ("numpy", "pandas", "scipy")
+
+
+def _installed_versions(pkgs: tuple[str, ...]) -> dict[str, Optional[str]]:
+    import importlib.metadata as im
+
+    out: dict[str, Optional[str]] = {}
+    for p in pkgs:
+        try:
+            out[p] = im.version(p)
+        except im.PackageNotFoundError:
+            out[p] = None
+    return out
+
+
+def _warn_if_core_changed(before: dict[str, Optional[str]]) -> None:
+    """If pip bumped a core package this session, the loaded copy is now stale.
+
+    Compare on-disk metadata before vs. after install. A diff means Colab's
+    already-imported numpy/pandas/scipy no longer matches what's installed —
+    a runtime restart is required before anything imports cleanly.
+    """
+    after = _installed_versions(_CORE_PKGS)
+    changed = [p for p in _CORE_PKGS if before.get(p) != after.get(p)]
+    if not changed:
+        return
+    details = ", ".join(f"{p} {before.get(p)} → {after.get(p)}" for p in changed)
+    bar = "=" * 72
+    print(
+        "\n" + bar + "\n"
+        "⚠️  A CORE PACKAGE CHANGED DURING INSTALL — RUNTIME RESTART NEEDED\n"
+        f"      {details}\n"
+        "    Colab's in-memory copy is now ABI-inconsistent (numpy '_center' break).\n"
+        "    ➜  Runtime → Restart session, then re-run from the smoke-test cell.\n"
+        "    (See this unit's KNOWN_ISSUES.md if the smoke test still fails.)\n"
+        + bar + "\n"
+    )
+
+
 def _fetch_requirements(unit: str) -> list[str]:
     url = f"{REPO_RAW}/{REPO_REF}/requirements/{unit}.txt"
     print(f"  fetching {url}")
@@ -74,7 +116,9 @@ def setup_unit(unit: str) -> None:
         reqs = []
 
     if reqs:
+        before = _installed_versions(_CORE_PKGS)
         _pip_install(*reqs)
+        _warn_if_core_changed(before)
 
     # Layer B — unit-specific quirks.
     handler = {
