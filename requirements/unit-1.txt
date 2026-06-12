@@ -30,6 +30,9 @@ certifi==2026.5.20
     # via
     #   httpcore
     #   httpx
+    #   pyogrio
+    #   pyproj
+    #   pyrosm
     #   requests
 cffi==2.0.0
     # via
@@ -47,6 +50,8 @@ contourpy==1.3.3
     # via matplotlib
 cycler==0.12.1
     # via matplotlib
+cykhash==2.0.1
+    # via pyrosm
 debugpy==1.8.21
     # via ipykernel
 decorator==5.3.1
@@ -61,6 +66,11 @@ fonttools==4.63.0
     # via matplotlib
 fqdn==1.5.1
     # via jsonschema
+geopandas==1.1.3
+    # via
+    #   geo-graph-learning
+    #   osmnx
+    #   pyrosm
 h11==0.16.0
     # via httpcore
 httpcore==1.0.9
@@ -183,6 +193,10 @@ nbformat==5.10.4
     #   nbconvert
 nest-asyncio2==1.7.2
     # via ipykernel
+networkx==3.6.1
+    # via
+    #   geo-graph-learning
+    #   osmnx
 notebook==7.5.7
     # via jupyter
 notebook-shim==0.2.4
@@ -193,12 +207,19 @@ numpy==2.4.6
     # via
     #   contourpy
     #   geo-graph-learning
+    #   geopandas
     #   matplotlib
+    #   osmnx
     #   pandas
+    #   pyogrio
+    #   shapely
+osmnx==2.1.0
+    # via geo-graph-learning
 overrides==7.7.0 ; python_full_version < '3.12'
     # via jupyter-server
 packaging==26.2
     # via
+    #   geopandas
     #   ipykernel
     #   jupyter-events
     #   jupyter-server
@@ -206,8 +227,12 @@ packaging==26.2
     #   jupyterlab-server
     #   matplotlib
     #   nbconvert
+    #   pyogrio
 pandas==3.0.3
-    # via geo-graph-learning
+    # via
+    #   geo-graph-learning
+    #   geopandas
+    #   osmnx
 pandocfilters==1.5.1
     # via nbconvert
 parso==0.8.7
@@ -224,6 +249,8 @@ prompt-toolkit==3.0.52
     # via
     #   ipython
     #   jupyter-console
+protobuf==7.35.1
+    # via pyrosm
 psutil==7.2.2
     # via
     #   ipykernel
@@ -242,8 +269,14 @@ pygments==2.20.0
     #   ipython-pygments-lexers
     #   jupyter-console
     #   nbconvert
+pyogrio==0.12.1
+    # via geopandas
 pyparsing==3.3.2
     # via matplotlib
+pyproj==3.7.2
+    # via geopandas
+pyrosm==0.8.0
+    # via geo-graph-learning
 python-dateutil==2.9.0.post0
     # via
     #   arrow
@@ -252,6 +285,8 @@ python-dateutil==2.9.0.post0
     #   pandas
 python-json-logger==4.1.0
     # via jupyter-events
+python-rapidjson==1.23
+    # via pyrosm
 pywinpty==3.0.5 ; os_name == 'nt'
     # via
     #   jupyter-server
@@ -271,7 +306,10 @@ referencing==0.37.0
     #   jsonschema-specifications
     #   jupyter-events
 requests==2.34.2
-    # via jupyterlab-server
+    # via
+    #   geo-graph-learning
+    #   jupyterlab-server
+    #   osmnx
 rfc3339-validator==0.1.4
     # via
     #   jsonschema
@@ -289,7 +327,15 @@ rpds-py==2026.5.1
 send2trash==2.1.0
     # via jupyter-server
 setuptools==82.0.1
-    # via jupyterlab
+    # via
+    #   jupyterlab
+    #   pyrosm
+shapely==2.1.2
+    # via
+    #   geo-graph-learning
+    #   geopandas
+    #   osmnx
+    #   pyrosm
 six==1.17.0
     # via
     #   python-dateutil
