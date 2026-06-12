@@ -16,13 +16,16 @@ dependencies = [
 # unit is built. Keep this hand-edited — `requirements/*.txt` is auto-generated.
 [project.optional-dependencies]
 unit-1 = [
-    "osmnx>=2.0,<3.0",
-    "networkx>=3.0",
-    "geopandas>=1.0",
-    "shapely>=2.0",
-    "requests",
-    "pyrosm",
-]
+        "osmnx>=2.0,<3.0",
+        "networkx>=3.0",
+        "geopandas>=1.0",
+        "shapely>=2.0",
+        "requests",
+        "pyrosm",
+        "igraph",
+        "folium",
+        "mapclassify"
+        ]
 unit-2 = [
     # Trajectory Mining — populated during unit-2 build
 ]
