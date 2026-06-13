@@ -28,9 +28,9 @@ jobs:
   export:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Install uv
-        uses: astral-sh/setup-uv@v5
+        uses: astral-sh/setup-uv@v7
       - name: Regenerate per-unit requirements
         run: bash scripts/export-requirements.sh
       - name: Commit regenerated requirements (if changed)
