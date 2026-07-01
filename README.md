@@ -20,11 +20,18 @@ Dynamic Navigation — inverse of the original syllabus PDF. See the
 
 | # | Topic | Capability after this unit | Status |
 |---|---|---|---|
-| 1 | [Graph Substrate](unit-1-graph-substrate/) | Topology metrics as analyzable signal; choosing graph + metric for a question. | _coming soon_ |
-| 2 | [Trajectory Mining](unit-2-trajectory-mining/) | Trajectories on AND off the graph; noise model + inference direction. | _coming soon_ |
-| 3 | [Statistical Baselines](unit-3-statistical-baselines/) | Univariate forecasting baseline + breakeven horizon + spatial gap. | _coming soon_ |
-| 4 | [Dynamic Navigation](unit-4-dynamic-navigation/) | Routing under w(t) + multimodal (road vs. transit) Cost of Anarchy. | _coming soon_ |
-| 5 | [Spatio-Temporal GNNs](unit-5-gnn/) | ST-GNN that earns its complexity; attention interrogation. | _coming soon_ |
+| 1 | [Graph Substrate](unit-1-graph-substrate/) | Topology metrics as analyzable signal; choosing graph + metric for a question. | ✅ **Ready** |
+| 2 | [Trajectory Mining](unit-2-trajectory-mining/) | Trajectories on AND off the graph; noise model + inference direction. | ✅ **Ready** |
+| 3 | [Statistical Baselines](unit-3-statistical-baselines/) | Univariate forecasting baseline + breakeven horizon + spatial gap. | ✅ **Ready** |
+| 4 | [Dynamic Navigation](unit-4-dynamic-navigation/) | Routing under w(t) + multimodal (road vs. transit) Cost of Anarchy. | 🔬 **Preview** |
+| 5 | [Spatio-Temporal GNNs](unit-5-gnn/) | ST-GNN that earns its complexity; attention interrogation. | 🔬 **Preview** |
+
+**Status key.** ✅ **Ready** — theory, demo, and practice are final. 🔬 **Preview** —
+demo available to look ahead, but content may still change before we teach it.
+
+New here? Start with the [**course syllabus**](./SYLLABUS.md) and the
+[**Unit 0 orientation deck**](unit-0-course-intro/) (~15 min — how the whole
+course works).
 
 Lessons are published as tagged releases (`v-unit1`, `v-unit2`, …). The course
 repo is updated **during the course**, so sync your fork to pull new lessons and
